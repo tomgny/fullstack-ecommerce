@@ -1,17 +1,17 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Product } from "../common/product";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
-import { ProductCategory } from "../common/product-category";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Product } from '../common/product';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { ProductCategory } from '../common/product-category';
 
 @Injectable({
-    providedIn: "root",
+    providedIn: 'root'
 })
 export class ProductService {
-    private baseUrl = "http://localhost:8080/api/products";
+    private baseUrl = 'http://localhost:8080/api/products';
 
-    private categoryUrl = "http://localhost:8080/api/product-category";
+    private categoryUrl = 'http://localhost:8080/api/product-category';
 
     constructor(private httpClient: HttpClient) {}
 
@@ -25,7 +25,7 @@ export class ProductService {
     getProductListPaginate(
         thePage: number,
         thePageSize: number,
-        theCategoryId: number,
+        theCategoryId: number
     ): Observable<GetResponseProducts> {
         // need to build URL based on category id, page and size
         const searchUrl =
@@ -52,7 +52,7 @@ export class ProductService {
     searchProductsPaginate(
         thePage: number,
         thePageSize: number,
-        theKeyword: string,
+        theKeyword: string
     ): Observable<GetResponseProducts> {
         // need to build URL based on keyword, page and size
         const searchUrl =
@@ -65,13 +65,13 @@ export class ProductService {
     private getProducts(searchUrl: string): Observable<Product[]> {
         return this.httpClient
             .get<GetResponseProducts>(searchUrl)
-            .pipe(map((response) => response._embedded.products));
+            .pipe(map(response => response._embedded.products));
     }
 
     getProductCategories(): Observable<ProductCategory[]> {
         return this.httpClient
             .get<GetResponseProductCategory>(this.categoryUrl)
-            .pipe(map((response) => response._embedded.productCategory));
+            .pipe(map(response => response._embedded.productCategory));
     }
 }
 

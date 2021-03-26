@@ -20,7 +20,7 @@
                         <td>
                             <p>{{ tempCartItem.name }}</p>
                             <p>
-                                {{ tempCartItem.unitPrice | currency: "USD" }}
+                                {{ tempCartItem.unitPrice | currency: 'USD' }}
                             </p>
                         </td>
                         <td>
@@ -69,7 +69,7 @@
                                 Subtotal:
                                 {{
                                     tempCartItem.quantity *
-                                        tempCartItem.unitPrice | currency: "USD"
+                                        tempCartItem.unitPrice | currency: 'USD'
                                 }}
                             </p>
                         </td>
@@ -81,7 +81,7 @@
                             <p>Total Quantity: {{ totalQuantity }}</p>
                             <p>Shipping: FREE</p>
                             <p>
-                                Total Price: {{ totalPrice | currency: "USD" }}
+                                Total Price: {{ totalPrice | currency: 'USD' }}
                             </p>
                             <a routerLink="/checkout" class="btn btn-primary"
                                 >Checkout</a

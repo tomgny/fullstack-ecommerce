@@ -1,8 +1,8 @@
-import { TestBed } from "@angular/core/testing";
+import { TestBed } from '@angular/core/testing';
 
-import { Luv2ShopFormService } from "./luv2-shop-form.service";
+import { Luv2ShopFormService } from './luv2-shop-form.service';
 
-describe("Luv2ShopFormService", () => {
+describe('Luv2ShopFormService', () => {
     let service: Luv2ShopFormService;
 
     beforeEach(() => {
@@ -10,7 +10,7 @@ describe("Luv2ShopFormService", () => {
         service = TestBed.inject(Luv2ShopFormService);
     });
 
-    it("should be created", () => {
+    it('should be created', () => {
         expect(service).toBeTruthy();
     });
 });

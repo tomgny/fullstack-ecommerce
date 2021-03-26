@@ -1,23 +1,23 @@
-import { Injectable } from "@angular/core";
-import { Observable, of } from "rxjs";
-import { HttpClient } from "@angular/common/http";
-import { Country } from "../common/country";
-import { map } from "rxjs/operators";
-import { State } from "../common/state";
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Country } from '../common/country';
+import { map } from 'rxjs/operators';
+import { State } from '../common/state';
 
 @Injectable({
-    providedIn: "root",
+    providedIn: 'root'
 })
 export class Luv2ShopFormService {
-    private countriesUrl = "http://localhost:8080/api/countries";
-    private statesUrl = "http://localhost:8080/api/states";
+    private countriesUrl = 'http://localhost:8080/api/countries';
+    private statesUrl = 'http://localhost:8080/api/states';
 
     constructor(private httpClient: HttpClient) {}
 
     getCountries(): Observable<Country[]> {
         return this.httpClient
             .get<GetResponseCountries>(this.countriesUrl)
-            .pipe(map((response) => response._embedded.countries));
+            .pipe(map(response => response._embedded.countries));
     }
 
     getStates(theCountryCode: string): Observable<State[]> {
@@ -26,7 +26,7 @@ export class Luv2ShopFormService {
 
         return this.httpClient
             .get<GetResponseStates>(searchStatesUrl)
-            .pipe(map((response) => response._embedded.states));
+            .pipe(map(response => response._embedded.states));
     }
 
     getCreditCardMonths(startMonth: number): Observable<number[]> {

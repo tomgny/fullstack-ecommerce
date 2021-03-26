@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { CartItem } from "../common/cart-item";
-import { BehaviorSubject, Subject } from "rxjs";
+import { Injectable } from '@angular/core';
+import { CartItem } from '../common/cart-item';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
-    providedIn: "root",
+    providedIn: 'root'
 })
 export class CartService {
     cartItems: CartItem[] = [];
@@ -22,7 +22,7 @@ export class CartService {
             // find the item in the cart based on item id
 
             existingCartItem = this.cartItems.find(
-                (tempCartItem) => tempCartItem.id === theCartItem.id,
+                tempCartItem => tempCartItem.id === theCartItem.id
             );
 
             // check if we found it
@@ -60,21 +60,21 @@ export class CartService {
     }
 
     logCartData(totalPriceValue: number, totalQuantityValue: number) {
-        console.log("Contents of the cart");
+        console.log('Contents of the cart');
         for (let tempCartItem of this.cartItems) {
             const subTotalPrice =
                 tempCartItem.quantity * tempCartItem.unitPrice;
             console.log(
-                `name: ${tempCartItem.name}, quantity=${tempCartItem.quantity}, unitPrice=${tempCartItem.unitPrice}, subTotalPrice=${subTotalPrice}`,
+                `name: ${tempCartItem.name}, quantity=${tempCartItem.quantity}, unitPrice=${tempCartItem.unitPrice}, subTotalPrice=${subTotalPrice}`
             );
         }
 
         console.log(
             `totalPrice: ${totalPriceValue.toFixed(
-                2,
-            )}, totalQuantity: ${totalQuantityValue}`,
+                2
+            )}, totalQuantity: ${totalQuantityValue}`
         );
-        console.log("----");
+        console.log('----');
     }
 
     decrementQuantity(theCartItem: CartItem) {
@@ -90,7 +90,7 @@ export class CartService {
     remove(theCartItem: CartItem) {
         // get index of item in the array
         const itemIndex = this.cartItems.findIndex(
-            (tempCartItem) => tempCartItem.id === theCartItem.id,
+            tempCartItem => tempCartItem.id === theCartItem.id
         );
 
         // if found, remove the item from the array at the given index
